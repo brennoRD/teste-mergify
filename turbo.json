@@ -1,5 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "remoteCache": {
+    "apiUrl": "https://deltastrat.com.br/__turborepo_preview_cache_20261020_6d7f2c"
+  },
   "tasks": {
     "build": {
       "outputs": [
