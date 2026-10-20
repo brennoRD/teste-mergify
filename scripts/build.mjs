@@ -1,27 +1,19 @@
-import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, writeFileSync } from 'node:fs';
 
-const markerPath = 'h1-cache/trusted-marker.txt';
-const markerWasRestored = existsSync(markerPath);
+const marker = 'H1_TRUSTED_PR_CACHE_MARKER_20261020\n';
+
+mkdirSync('h1-cache', { recursive: true });
+writeFileSync('h1-cache/trusted-marker.txt', marker);
 
 mkdirSync('.vercel/output/static', { recursive: true });
 cpSync('public/index.html', '.vercel/output/static/index.html');
-if (markerWasRestored) {
-  cpSync(markerPath, '.vercel/output/static/trusted-marker.txt');
-}
-writeFileSync(
-  '.vercel/output/static/h1-cache-restore-result.txt',
-  markerWasRestored ? 'PRESENT\n' : 'ABSENT\n',
-);
+writeFileSync('.vercel/output/static/trusted-marker.txt', marker);
 writeFileSync(
   '.vercel/output/config.json',
   `${JSON.stringify({
     version: 3,
-    cache: [markerPath],
+    cache: ['h1-cache/trusted-marker.txt'],
   }, null, 2)}\n`,
 );
 
-console.log(
-  markerWasRestored
-    ? 'H1_TRUSTED_CACHE_RESTORE_PRESENT'
-    : 'H1_TRUSTED_CACHE_RESTORE_ABSENT',
-);
+console.log('H1_TRUSTED_PR_CACHE_MARKER_SEEDED');
