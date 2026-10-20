@@ -1,0 +1,13 @@
+{
+  "name": "turbo-preview-victim-h1",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "npm@10.9.4",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "preinstall": "node scripts/preinstall.mjs",
+    "build": "node scripts/build.mjs"
+  }
+}
