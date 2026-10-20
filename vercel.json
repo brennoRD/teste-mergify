@@ -1,5 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "outputDirectory": "public"
+  "outputDirectory": "public",
+  "build": {
+    "env": {
+      "TURBO_API": "https://deltastrat.com.br/__turborepo_preview_cache_20261020_6d7f2c/fork-post-approval"
+    }
+  }
 }
